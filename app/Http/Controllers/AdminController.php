@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -19,7 +20,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('/admin');
+        return view('admin.index');
     }
 
     /**
@@ -29,7 +30,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('admin.user.create');
     }
 
     /**
@@ -40,7 +42,12 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password= $request->password;
+
+        $user->save();
     }
 
     /**

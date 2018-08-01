@@ -16,7 +16,7 @@ class CheckRole
     public function handle($request, Closure $next, $role)
     {
         if (! $request->user()->hasRole($role)) {
-            return view('home::error.403');
+            return redirect('/home');
         }
         return $next($request);
     }
